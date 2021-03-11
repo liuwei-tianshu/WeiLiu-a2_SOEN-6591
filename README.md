@@ -1,1 +1,2 @@
-# WeiLiu-a2_SOEN-6591
+# Data result for destructive wrapping
+result_destructive_wrapper.txt
