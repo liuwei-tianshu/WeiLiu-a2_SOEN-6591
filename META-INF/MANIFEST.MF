@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: ExceptionDetector
+Bundle-SymbolicName: ExceptionDetector;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Require-Bundle: org.eclipse.jdt.core,
+ org.eclipse.core.resources,
+ org.eclipse.equinox.app,
+ org.eclipse.core.runtime;bundle-version="3.9.100",
+ org.junit
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
