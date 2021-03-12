@@ -3,6 +3,11 @@ Wei Liu's assignment2 for SOEN6591
 
 Slides: https://docs.google.com/presentation/d/1KbaMDtO5d2aPycI-R6cXKcLZzzbE_Qo1SElT3GO2nN8/edit?usp=sharing
 
+# Data result
+ Application       | Version |  Java files |  catch clause |  basic instances | advanced instances
+ ------------------|---------| ------------|---------------|------------------|---------------------
+ Apache CloudStack | 4.9.0   |    4646     |   8,970,528   |      174,610     |          0                    
+
 # Output file
 ### Basic type
 /result_destructive_wrapper.txt 
@@ -32,7 +37,7 @@ However, the function ExceptionUtil is like this:
         rethrow(t, Error.class);
     }
 ``` 
-According to the definition of Destructive Wrapping, they are not instances of anti-pattern.
+According to the definition of Destructive Wrapping, it is not instance of anti-pattern.
 
 ### Output file format
 First line in the outputfile: **\<system\>cloudstack-4.9\</system\>\<callsite\>.AgentShell.launchAgentFromClassInfo\</callsite\>\<line\>368\</line\>**
