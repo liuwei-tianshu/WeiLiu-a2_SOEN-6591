@@ -40,8 +40,10 @@ However, the function ExceptionUtil is like this:
 According to the definition of Destructive Wrapping, it is not instance of anti-pattern.
 
 ### Output file format
-First line in the outputfile: **\<system\>cloudstack-4.9\</system\>\<callsite\>.AgentShell.launchAgentFromClassInfo\</callsite\>\<line\>368\</line\>**
+First line in the outputfile /result_destructive_wrapper.txt: 
+
+**\<system\>cloudstack-4.9\</system\>\<callsite\>.AgentShell.launchAgentFromClassInfo\</callsite\>\<line\>368\</line\>**
 
 where, **AgentShell** is the class name while **launchAgentFromClassInfo** is the method name, **368** is the line of anti-pattern.
 
-check the Line 368 on Java file AgentShell.java to verify the destructive wrapping :https://github.com/apache/cloudstack/blob/master/agent/src/main/java/com/cloud/agent/AgentShell.java 
+check the Line 368 on Java file **AgentShell.java** to verify the destructive wrapping :https://github.com/apache/cloudstack/blob/master/agent/src/main/java/com/cloud/agent/AgentShell.java 
