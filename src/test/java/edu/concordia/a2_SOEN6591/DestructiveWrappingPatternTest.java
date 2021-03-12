@@ -67,11 +67,11 @@ public class DestructiveWrappingPatternTest {
 		CompilationUnit cu5 = parse(instance5);
 		CompilationUnit cu6 = parse(instance6);
 
-//		assertEquals(destructiveWrappingPattern.isPattern(cu1), false);
-//		assertEquals(destructiveWrappingPattern.isPattern(cu2), false);
-//		assertEquals(destructiveWrappingPattern.isPattern(cu3), true);
-//		assertEquals(destructiveWrappingPattern.isPattern(cu4), true);
-//		assertEquals(destructiveWrappingPattern.isPattern(cu5), true);
+		assertEquals(destructiveWrappingPattern.isPattern(cu1), false);
+		assertEquals(destructiveWrappingPattern.isPattern(cu2), false);
+		assertEquals(destructiveWrappingPattern.isPattern(cu3), true);
+		assertEquals(destructiveWrappingPattern.isPattern(cu4), true);
+		assertEquals(destructiveWrappingPattern.isPattern(cu5), true);
 		assertEquals(destructiveWrappingPattern.isPattern(cu6), false);
 	}
 }

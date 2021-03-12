@@ -30,6 +30,7 @@ public class Application implements IApplication {
 	private List<String> exceptionList = new ArrayList<String>(); 
 	private String directoryPath = "E:\\Documents\\lessons\\SOEN 6591\\assignment2+deadline March 10\\workspace\\a2_SOEN6591\\";
 	private String fileName = "result_destructive_wrapper.txt"; // output file
+	public long catchNum = 0;
 	
 	@Override
 	public Object start(IApplicationContext context) throws Exception {
@@ -38,6 +39,7 @@ public class Application implements IApplication {
 		IWorkspaceRoot root = ResourcesPlugin.getWorkspace().getRoot();
 		IProject[] projects = root.getProjects();
 
+		// traverse the project first
 		root = ResourcesPlugin.getWorkspace().getRoot();
 		projects = root.getProjects();
 		for (IProject project : projects) {
@@ -47,6 +49,7 @@ public class Application implements IApplication {
 			}
 		}
 		
+		// detect anti-pattern
 		System.out.println("\r\n--------------------------------------------");
 		System.out.println("##BugInstance type: Destructive Wrapping##");
 		ClassModelVisitor classModelVisitor = new ClassModelVisitor();
@@ -54,6 +57,7 @@ public class Application implements IApplication {
 			if(classModelVisitor.isPattern(unit)) {
 				exceptionList.addAll(classModelVisitor.getExceptionList());
 			}
+			catchNum += classModelVisitor.catchNum;
 		}
 		
 		// write data to file
@@ -65,6 +69,7 @@ public class Application implements IApplication {
 		
 		System.out.println("Done. Total Destructive Wrapping:" + exceptionList.size() + "\n");
 		System.out.println("Java files:" + unitList.size() + "\n");
+		System.out.println("Catch Clause Number:" + catchNum + "\n");
 		long endTime = System.nanoTime();
 		long duration = (endTime - startTime);
 		System.out.println("It took " + duration / 1000000 / 1000 + " seconds");
@@ -80,7 +85,7 @@ public class Application implements IApplication {
 	}
 
 	/**
-	 * Perform static analysis on the Java project
+	 * traverse project
 	 * 
 	 * @param project
 	 * @throws JavaModelException
@@ -98,26 +103,19 @@ public class Application implements IApplication {
 	}
 
 	/**
-	 * Analyze data usage of each Spring entry function
+	 * traverse package
 	 * 
 	 * @param mypackage
 	 * @throws JavaModelException
 	 */
 	private void analyze(IPackageFragment mypackage) throws JavaModelException {
 		for (ICompilationUnit unit : mypackage.getCompilationUnits()) {
-
 			if (unit.getElementName().contains("test")|| unit.getElementName().contains("IT") && !unit.getElementName().contains("ITenant")
 							|| (unit.getElementName().contains("Test")))
 				continue;
 
 			CompilationUnit parsedUnit = parse(unit);
-
-			//EmptyCatchVisitor exVisitor = new EmptyCatchVisitor(mypackage, unit, parsedUnit);
-			
 			unitList.add(parsedUnit);
-
-			//parsedUnit.accept(exVisitor);
-
 		}
 
 	}
@@ -129,7 +127,6 @@ public class Application implements IApplication {
 	 * @param unit
 	 * @return
 	 */
-
 	private CompilationUnit parse(ICompilationUnit unit) {
 		ASTParser parser = ASTParser.newParser(AST.JLS4);
 		parser.setKind(ASTParser.K_COMPILATION_UNIT);
