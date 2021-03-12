@@ -1,9 +1,9 @@
-## Description
+# Description
 Wei Liu's assignment2 for SOEN6591
 
 Slides: https://docs.google.com/presentation/d/1KbaMDtO5d2aPycI-R6cXKcLZzzbE_Qo1SElT3GO2nN8/edit?usp=sharing
 
-## Output file
+# Output file
 ### Basic type
 /result_destructive_wrapper.txt 
 (https://github.com/liuwei-tianshu/WeiLiu-a2_SOEN-6591/blob/main/result_destructive_wrapper.txt)
